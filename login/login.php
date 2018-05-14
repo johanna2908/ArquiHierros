@@ -24,7 +24,6 @@ session_start();//session starts here
             </div>
         </nav>
     
-
     <div id="page-wrapper">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -43,7 +42,6 @@ session_start();//session starts here
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <input class="form-control" placeholder="Contraseña" name="pass" type="password" value="">
                                 </div>
-
 
                                 <input class="btn btn-lg btn-info btn-block" type="submit" value="Entrar" name="login" >
 
