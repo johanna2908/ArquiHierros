@@ -42,7 +42,7 @@ while($indicador=mysqli_fetch_array($run))//while look to fetch the result and s
                     Indicador Actual:
                 </label>
                 <div class="col-md-9">
-                     <textarea class="form-control" value="<?php echo $pregunta; ?>" name="pregunta" rows="3" disabled></textarea><br/>
+                     <textarea class="form-control" style="color: darkgreen;" name="pregunta" rows="3" disabled><?php echo $pregunta; ?></textarea><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
