@@ -113,7 +113,7 @@ if(mysqli_num_rows($req) > 0){
 
 			echo '<input name="votar" type="submit" class="btn btn-info" value="Votar"><br/><br/>';
 			echo '<a href="resultado.php?id='.$id_pregunta.'" class="btn btn-success btn-xs">Ver Resultados</a><br/>';
-			echo '<a href="index.php" class="btn btn-danger btn-xs">&larr; Volver</a>';
+			echo '<a href="javascript:window.history.back();" class="btn btn-danger btn-xs">&larr; Volver</a>';
 
 		?>
 

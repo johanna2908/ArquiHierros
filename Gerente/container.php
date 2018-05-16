@@ -53,7 +53,7 @@
                             <li><a href="listar_indicador.php"><i class="glyphicon glyphicon-triangle-right"></i> Listar</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="glyphicon glyphicon-save"></i> Reportes</a></li>
+                    <li><a href="reportes.php"><i class="glyphicon glyphicon-save"></i> Reportes</a></li>
                     <li><a href="calificar_empleado.php"><i class="glyphicon glyphicon-ok"></i> Calificar</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-user">

@@ -28,6 +28,7 @@ if(!$_SESSION['email'])
                                 <th>Indicador</th>
                                 <th>Modificar Indicador</th>
                                 <th>Borrar Indicador</th>
+                                <th>Resultados Indicador</th>
                             </tr>
                         </thead>
 
@@ -48,6 +49,7 @@ if(!$_SESSION['email'])
                                 <td><?php echo $indicador;  ?></td>
                                 <td><a href="modificar_indicador.php?upt=<?php echo $user_id ?>"><button class="btn btn-info glyphicon glyphicon-pencil"></button></a></i></td>
                                 <td><a href="eliminar_indicador.php?del=<?php echo $user_id ?>"><button class="btn btn-danger glyphicon glyphicon-trash"></button></a></td>
+                                <td><a href="resultado.php?id=<?php echo $user_id ?>"><button class="btn btn-success glyphicon glyphicon-stats"></button></a></td>
                             </tr>
 
                         <?php 

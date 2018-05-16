@@ -9,6 +9,7 @@ if(!$_SESSION['email'])
 }
 ?>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/js/modules/exporting.js"></script>
 
 
 <?php
@@ -42,67 +43,76 @@ while($result = @mysqli_fetch_object($mod)){
 
 			while($result = @mysqli_fetch_object($req)){
 				if($result->nombre == "Fijo"){
-					$func = "SELECT sum(CAST(respuesta AS DECIMAL))/count(*) as Dato from respuestas a, indicador b, tipo c where a.id_indicador_rta = b.id_indicador and b.id_tipo_pregunta = c.id_tipo and c.id_tipo = 2";
+					$func = "SELECT r.id_indicador_rta , COUNT(r.id_indicador_rta) as cantidad, 
+					sum(respuesta)/COUNT(r.id_indicador_rta) as Dato
+					FROM respuestas r, indicador i, tipo t 
+					WHERE r.id_indicador_rta = i.id_indicador AND i.id_tipo_pregunta = t.id_tipo AND t.id_tipo = 2
+					AND r.id_indicador_rta = $id
+					GROUP BY  r.id_indicador_rta;";
 					$eje_query = mysqli_query($dbcon,$func);
 					if(mysqli_num_rows($eje_query)>0)
         			{
         				while($dato=mysqli_fetch_array($eje_query))//while look to fetch the result and store in a array $trabajador.
     					{
-        					$datono=$dato["Dato"];
+							$datono = $dato["Dato"];
+							$cantidadEmpleados = $dato["cantidad"];
     					}
-        			}
+					}
+
+					$muestraGrafica = array();
+					for ($i=0; $i < $cantidadEmpleados ; $i++) { 
+						$muestraGrafica[$i] = $datono;
+					}
+
+					$sql = "SELECT CONCAT(u.nombres, ' ', u.apellidos) as nom,
+					r.respuesta
+					FROM respuestas r
+					LEFT JOIN usuarios u on r.id_usuario_rta = u.documento
+					LEFT JOIN indicador i on r.id_indicador_rta = i.id_indicador
+					LEFT JOIN tipo t on i.id_tipo_pregunta = t.id_tipo 
+					WHERE r.id_indicador_rta = i.id_indicador and i.id_tipo_pregunta = t.id_tipo and t.id_tipo = 2
+					AND r.id_indicador_rta = $id
+					ORDER BY t.tipo_pregunta, u.nombres";
+					$eje_query = mysqli_query($dbcon,$sql);
+					$informacion = array('nombre' => array(), 'respuesta' => array());
+					$idx = 0;
+					while($result = mysqli_fetch_object($eje_query)){
+						array_push($informacion['nombre'],$result->nom);
+						array_push($informacion['respuesta'],$result->respuesta);
+						$i++;
+					}
+					
 					echo "<h1 class='page-header'>Media ".$datono."</h1>";
 					echo "<br/><br/><br/>";
 					echo "<div id='container' style='height: 400px'></div>";
 					echo "<script>
+					Highcharts.chart('container', {
+
+						title: {
+							text: 'Grafica Cuantitativo Fijo'
+						},
+						yAxis: {
+							title: 'Valores',
+						},
+						xAxis: {
+							title: 'Empleados',
+							categories: ['".implode("','",$informacion['nombre'])."']
+						},
+						tooltip: {
+							formatter: function () {
+								return '<b>' + this.series.name + '</b><br/>' +
+									this.x + ': ' + this.y;
+							}
+						},series: [{
+							color: 'red',
+							name: 'Muestra',
+							data: [".implode(",",$muestraGrafica)."]
+						},{
+							name: 'Respuesta',
+							data: [".implode(",",$informacion['respuesta'])."]
+						}]
 					
-Highcharts.chart('container', {
-    chart: {
-        //alignTicks: false,
-        type: 'line'
-    },
-    xAxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    },
-    yAxis: [{
-        title: {
-            text: 'Primary Axis'
-        },
-        gridLineWidth: 0
-    }, {
-        title: {
-            text: 'Secondary Axis'
-        },
-        opposite: true
-    }],
-    legend: {
-        layout: 'vertical',
-        backgroundColor: '#FFFFFF',
-        floating: true,
-        align: 'left',
-        x: 100,
-        verticalAlign: 'top',
-        y: 70
-    },
-    tooltip: {
-        formatter: function () {
-            return '<b>' + this.series.name + '</b><br/>' +
-                this.x + ': ' + this.y;
-        }
-    },
-    plotOptions: {
-    },
-    series: [{
-        name: 'Media',
-        color: 'red',
-        data: [".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono.", ".$datono."]
-
-    }, {
-        data: [129.9, 271.5, 306.4, 29.2, 544.0, 376.0, 435.6, 348.5, 216.4, 294.1, 35.6, 354.4],
-        yAxis: 1
-
-    }]
-});
+					});
 					</script>";
 				}
 				else{
@@ -128,7 +138,7 @@ Highcharts.chart('container', {
 
 			if(isset($aux)){
 				echo '<br/><br/><span class="fr">Total: '.$suma.'</span><br/>';
-				echo '<a href="encuesta.php?id='.$id.'"" class="volver">← Volver</a>';
+				echo '<a href="javascript:window.history.back();" class="volver">← Volver</a>';
 			}
 
 ?>
