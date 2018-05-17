@@ -86,7 +86,7 @@ while($indicador=mysqli_fetch_array($run))//while look to fetch the result and s
 if(isset($_POST['actualizar']))
 {
     $pregunta=$_POST['pregunta'];//same
-    $estado = ($_POST['estado'] == 'on') ? 1 : 0;
+    $estado = (isset($_POST['estado']) && $_POST['estado'] == 'on') ? 1 : 0;
 
 
     if($pregunta=='')

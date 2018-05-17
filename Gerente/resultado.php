@@ -50,6 +50,7 @@ while($result = @mysqli_fetch_object($mod)){
 					AND r.id_indicador_rta = $id
 					GROUP BY  r.id_indicador_rta;";
 					$eje_query = mysqli_query($dbcon,$func);
+					$cantidadEmpleados = $datono = 0;
 					if(mysqli_num_rows($eje_query)>0)
         			{
         				while($dato=mysqli_fetch_array($eje_query))//while look to fetch the result and store in a array $trabajador.
