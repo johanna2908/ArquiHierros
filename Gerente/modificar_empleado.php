@@ -117,7 +117,7 @@ if(isset($_POST['actualizar']))
     $nombres=$_POST['nombres'];//same
     $apellidos=$_POST['apellidos'];//same
     $correo=$_POST['correo'];
-    $estado = ($_POST['estado'] == 'on') ? 1 : 0;
+    $estado = (isset($_POST['estado']) && $_POST['estado'] == 'on') ? 1 : 0;
 
 
     if($correo=='' || $nombres==''||$apellidos=='')

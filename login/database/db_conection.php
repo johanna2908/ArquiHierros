@@ -6,7 +6,7 @@
  * Time: 1:13 AM
  */
 
-$dbcon=mysqli_connect("localhost","root","root");
+$dbcon=mysqli_connect("localhost","root","");
 
 mysqli_select_db($dbcon,"users");
 
