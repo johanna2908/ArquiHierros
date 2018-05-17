@@ -29,11 +29,11 @@ if(!$_SESSION['email'])
                   		</ul>
                 	</div>
 
-                    <form class="cuanti" method="post" role="form" action="registrar_indicador.php">
+                    <form class="cuanti" method="post" role="form" action="registrar_indicador.php" >
                         <div class="cuanti">
                             <label>Pregunta Cuantitativa</label>
                         </div>
-                        <textarea class="form-control" name="preguntaCuantitativa" rows="3" placeholder="Digite la Pregunta Aquí..."></textarea><br/>
+                        <textarea class="form-control" style="color:darkgreen;" name="preguntaCuantitativa" rows="3" placeholder="Digite la Pregunta Aquí..."></textarea><br/>
                         
                         <div class="form-group" id="cuanti">
                             <div class="form-group" id="cuanti">
@@ -109,7 +109,7 @@ if(!$_SESSION['email'])
                         <div class="cuali">
                             <label>Pregunta Cualitativa</label>
                         </div>
-                        <textarea class="form-control" rows="3" name="preguntaCualitativa" placeholder="Digite la Pregunta Aquí..."></textarea><br/>
+                        <textarea class="form-control" style="color:darkgreen;" rows="3" name="preguntaCualitativa" placeholder="Digite la Pregunta Aquí..."></textarea><br/>
                         <fieldset disabled>
                         <div class="form-group" id="cuali">
                             <div class="radio">

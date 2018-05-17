@@ -78,7 +78,6 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                     Correo Electrónico:
                 </label>
                 <div class="col-md-9">
-                    <input type="email" class="form-control" style="color:darkgreen;" value="<?php echo $email; ?>" name="correo">
                     <p class="help-block">
                         Ejemplo: tunombre@dominio.com
                     </p><br/>

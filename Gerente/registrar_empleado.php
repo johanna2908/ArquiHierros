@@ -21,11 +21,11 @@ if(!$_SESSION['email'])
                 <h2>Registro Empleado</h2><br/>
             </div>
             <div>
-                <label for="lastname" class="col-md-2">
-                    Documento:
+                <label for="lastname" class="col-md-2" >
+                    Documento: 
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" name="documento"><br/>
+                    <input type="text" class="form-control" name="documento" style="color:darkgreen;"><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -35,7 +35,7 @@ if(!$_SESSION['email'])
                     Nombres:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" name="nombres"><br/>
+                    <input type="text" class="form-control" name="nombres"  style="color:darkgreen;"><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -45,7 +45,7 @@ if(!$_SESSION['email'])
                     Apellidos:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" name="apellidos"><br/>
+                    <input type="text" class="form-control" name="apellidos" style="color:darkgreen;"><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -55,7 +55,7 @@ if(!$_SESSION['email'])
                     Correo Electrónico:
                 </label>
                 <div class="col-md-9">
-                    <input type="email" class="form-control" name="correo">
+                    <input type="email" class="form-control" name="correo" style="color:darkgreen;">
                     <p class="help-block">
                         Ejemplo: tunombre@dominio.com
                     </p><br/>
@@ -68,7 +68,7 @@ if(!$_SESSION['email'])
                     Contraseña:
                 </label>
                 <div class="col-md-9">
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" style="color:darkgreen;">
                     <p class="help-block">
                         Min: 6 Caracteres (Solo Alfanumerico)
                     </p><br/>
@@ -81,10 +81,9 @@ if(!$_SESSION['email'])
                     Rol:
                 </label>
                 <div class="col-md-9">
-                    <select name="rol" name="rol" class="form-control">
+                    <select name="rol" name="rol" class="form-control" style="color:darkgreen;">
                         <option value="0">--Seleccione una Opción--</option>
-                        <option value="Cliente">Cliente</option>
-                        <option value="Administrador">Administrador</option>
+                        <option value="Cliente">Empleado</option>
                         <option value="Gerente">Gerente</option>
                     </select><br/>
                 </div>            

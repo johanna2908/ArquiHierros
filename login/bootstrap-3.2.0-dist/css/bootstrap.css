@@ -899,8 +899,15 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-image: url("https://i.pinimg.com/originals/f3/df/92/f3df92c17f5c1cc3209e60bc3831f3df.jpg");
 }
+
+
+
+
+
+
+
 input,
 button,
 select,
@@ -4994,7 +5001,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);

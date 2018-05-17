@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Gerencia ArquiHierros</a>
+                <a class="navbar-brand" href="index.php">Gerencia- Modelo Balance Score Card Para La Empresa ArquiHierros S.A.S</a>
                 <li class="divider-vertical"></li>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">

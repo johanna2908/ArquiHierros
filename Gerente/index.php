@@ -9,7 +9,7 @@ if(!$_SESSION['email'])
 }
 ?>
 
-<title>Gerencia ArquiHierros</title>
+<title> Gerencia- Modelo Balance Score Card Para La Empresa ArquiHierros S.A.S</title>
 
 <?php include('container.php');?>
 
