@@ -58,7 +58,7 @@ else{
 ?>
 <?php
 include("../login/database/db_conection.php");
-$sql = "SELECT * FROM indicador ORDER BY id_indicador DESC";
+$sql = "SELECT * FROM indicador Where estado = 1 ORDER BY id_indicador DESC";
 $req = mysqli_query($dbcon, $sql);
 ?>
 
