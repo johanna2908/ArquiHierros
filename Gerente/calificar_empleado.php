@@ -14,7 +14,7 @@
 
     $documento=$_POST['documento'];
 
-    $check_user="select * from usuarios WHERE documento='$documento'";
+    $check_user="select * from usuarios WHERE documento='$documento' and estado = 1";
 
     $run=mysqli_query($dbcon,$check_user);
 

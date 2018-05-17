@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ehtesham Mehmood
- * Date: 11/24/2014
- * Time: 11:55 PM
- */
 include("../login/database/db_conection.php");
 $delete_id=$_GET['del'];
 
@@ -22,7 +16,7 @@ while($usuario=mysqli_fetch_array($buscar))//while look to fetch the result and 
     $rol=$usuario[6];
 }
 
-$delete_query="delete from usuarios WHERE id_usuario='$delete_id'";//delete query
+$delete_query="UPDATE usuarios SET estado=0 WHERE id_usuario='$delete_id'";//delete query
 $run=mysqli_query($dbcon,$delete_query);
 if($run)
 {

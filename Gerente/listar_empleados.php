@@ -31,6 +31,7 @@ if(!$_SESSION['email'])
                                 <th>Rol</th>
                                 <th>Modificar Usuario</th>
                                 <th>Borrar Usuario</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
 
@@ -48,6 +49,8 @@ if(!$_SESSION['email'])
                                 $email=$row[4];
                                 $password=$row[5];
                                 $rol=$row[6];
+                                $estado = ($row[7] == 1) ? "Activo" : "Inactivo";
+                                $colors = ($row[7] == 1) ? "success" : "danger";
                         ?>
 
                             <tr>
@@ -58,6 +61,7 @@ if(!$_SESSION['email'])
                                 <td><?php echo $rol;  ?></td>
                                 <td><a href="modificar_empleado.php?upt=<?php echo $user_id ?>"><button class="btn btn-info glyphicon glyphicon-pencil"></button></a></i></td>
                                 <td><a href="eliminar.php?del=<?php echo $user_id ?>"><button class="btn btn-danger glyphicon glyphicon-trash"></button></a></td>
+                                <td><span class="label label-<?php echo $colors; ?>"><?php echo $estado; ?></span></td>
                             </tr>
 
                         <?php 

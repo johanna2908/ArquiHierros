@@ -31,6 +31,8 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
     $email=$usuario[4];
     $password=$usuario[5];
     $rol=$usuario[6];
+    $check = ($usuario[7] == 1) ? "checked" :  "";
+    $estado = $usuario[7];
 }
 ?>
 
@@ -46,7 +48,7 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                     Documento:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" value="<?php echo $documento; ?>" name="documento" disabled><br/>
+                    <input type="text" class="form-control" style="color:darkgreen;" value="<?php echo $documento; ?>" name="documento" disabled><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -56,7 +58,7 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                     Nombres:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" value="<?php echo $nombres; ?>" name="nombres"><br/>
+                    <input type="text" class="form-control" style="color:darkgreen;"  value="<?php echo $nombres; ?>" name="nombres"><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -66,7 +68,7 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                     Apellidos:
                 </label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" value="<?php echo $apellidos; ?>" name="apellidos"><br/>
+                    <input type="text" class="form-control" style="color:darkgreen;" value="<?php echo $apellidos; ?>" name="apellidos"><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -76,10 +78,20 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                     Correo Electrónico:
                 </label>
                 <div class="col-md-9">
-                    <input type="email" class="form-control" value="<?php echo $email; ?>" name="correo">
+                    <input type="email" class="form-control" style="color:darkgreen;" value="<?php echo $email; ?>" name="correo">
                     <p class="help-block">
                         Ejemplo: tunombre@dominio.com
                     </p><br/>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+            <div>
+                <label for="lastname" class="col-md-2">
+                    Estado:
+                </label>
+                <div class="col-md-9">
+                    <input type="checkbox" class="form-control" name="estado" <?php echo $check; ?>><br/>
                 </div>
                 <div class="col-md-1">
                 </div>
@@ -91,7 +103,8 @@ while($usuario=mysqli_fetch_array($run))//while look to fetch the result and sto
                         Modificar
                     </button>
                 </div>
-            </div><br/>
+            </div>
+            <br/>
         </form>
     </div>
 
@@ -104,6 +117,7 @@ if(isset($_POST['actualizar']))
     $nombres=$_POST['nombres'];//same
     $apellidos=$_POST['apellidos'];//same
     $correo=$_POST['correo'];
+    $estado = ($_POST['estado'] == 'on') ? 1 : 0;
 
 
     if($correo=='' || $nombres==''||$apellidos=='')
@@ -113,8 +127,8 @@ if(isset($_POST['actualizar']))
 
     }
     else{
-            $actualizar="update usuarios set nombres='$nombres', apellidos='$apellidos', correo='$correo' WHERE id_usuario='$id_modificar'";
-
+            $actualizar="update usuarios set nombres='$nombres', apellidos='$apellidos', correo='$correo', estado=$estado WHERE id_usuario='$id_modificar'";
+error_log($actualizar);
             if(mysqli_query($dbcon,$actualizar))
             {
                 echo "<script>alert('El Empleado $nombres $apellidos identificado con el documento $documento actualizado Satisfactoriamente!');window.open('listar_empleados.php','_self')</script>";

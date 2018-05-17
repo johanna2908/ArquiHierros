@@ -26,7 +26,8 @@ while($indicador=mysqli_fetch_array($run))//while look to fetch the result and s
 {
     $id_indicador=$indicador[0];
     $pregunta=$indicador[1];
-
+    $estado = $indicador[3];
+    $check = ($indicador[3] == 1) ? "checked" :  "";
 }
 ?>
 
@@ -57,6 +58,16 @@ while($indicador=mysqli_fetch_array($run))//while look to fetch the result and s
                 <div class="col-md-1">
                 </div>
             </div>
+            <div>
+                <label for="lastname" class="col-md-2">
+                    Estado:
+                </label>
+                <div class="col-md-9">
+                    <input type="checkbox" class="form-control" name="estado" <?php echo $check; ?>><br/>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
@@ -75,7 +86,7 @@ while($indicador=mysqli_fetch_array($run))//while look to fetch the result and s
 if(isset($_POST['actualizar']))
 {
     $pregunta=$_POST['pregunta'];//same
-
+    $estado = ($_POST['estado'] == 'on') ? 1 : 0;
 
 
     if($pregunta=='')
@@ -85,7 +96,7 @@ if(isset($_POST['actualizar']))
 
     }
     else{
-            $actualizar="update indicador set pregunta='$pregunta' WHERE id_indicador='$id_modificar'";
+            $actualizar="update indicador set pregunta='$pregunta', estado = $estado WHERE id_indicador='$id_modificar'";
 
             if(mysqli_query($dbcon,$actualizar))
             {
