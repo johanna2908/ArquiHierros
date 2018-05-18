@@ -17,7 +17,7 @@ if(!$_SESSION['email'])
         <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listado de Usuarios </h3>
+                    <h3 class="panel-title"><i class="glyphicon glyphicon-list-alt"></i> Listado de Empleados </h3>
                 </div>
                 <div class="panel-body">
                     <div id="shieldui-grid1"></div>

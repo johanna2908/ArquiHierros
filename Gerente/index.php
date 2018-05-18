@@ -13,6 +13,10 @@ if(!$_SESSION['email'])
 
 <?php include('container.php');?>
 
+<div id="page-wrapper" style="text-align: center; vertical-align: middle;">
+            
+   <img height="90%" width="90%" src="../img/hierros.jpg" />
+
 <div id="page-wrapper">
 	
 </div>
