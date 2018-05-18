@@ -86,18 +86,15 @@ if(isset($_POST['login']))
 
     if(mysqli_num_rows($run))
     {
+        $_SESSION['email']=$correo;//here session is used and value of $user_email store in $_SESSION.
+        $_SESSION['pass']=$password;
+        $_SESSION['documento'] = $documento;
         if($rol=="Gerente")
         {
             echo "<script>window.open('../Gerente/index.php','_self')</script>";
-
-            $_SESSION['email']=$correo;//here session is used and value of $user_email store in $_SESSION.
-            $_SESSION['pass']=$password;
         }
         else{
             echo "<script>window.open('../Cliente/index.php','_self')</script>";
-
-            $_SESSION['email']=$correo;//here session is used and value of $user_email store in $_SESSION.
-            $_SESSION['pass']=$password;
         }
     }
     else

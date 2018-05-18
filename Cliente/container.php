@@ -35,7 +35,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="active" class="nav navbar-nav side-nav">
                     <li><a href="index.php"><i class="glyphicon glyphicon-equalizer"></i> Inicio</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-save"></i> Reportes</a></li>
+                    <li><a href="reportes.php"><i class="glyphicon glyphicon-save"></i> Reportes</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right navbar-user">
                     <li class="divider-vertical"></li>
